@@ -6,21 +6,12 @@ module.exports = function (app) {
     app.get('/linhas', controller.listar);
 
     ///linhas é a requisição - :id é o params
-    app.delete('/linhas/:id', controller.deletar);
+    app.delete('/linhas/:id', controller.excluir);
 
-    // app.put('/linhas/:id', controller.alterar);
+    app.put('/linhas/:id', controller.alterar);
+    
+    // app.get('/linhas/:id', controller.listarPorId);
 
     app.get('/linhas/:id', controller.listarUm);
+    // app.post('/linhas',controller.alterar);
 }
-
-// function(err, data) {
-
-// }
-
-// (err, data) => {
-
-// }
-
-
-
-

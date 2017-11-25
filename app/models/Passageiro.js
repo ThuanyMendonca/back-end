@@ -17,6 +17,9 @@ var schema = mongoose.Schema({
     cidade_destino: {
         type: mongoose.Schema.ObjectId,
         ref: 'cidade'
+    },
+    data : {
+        type: Date
     }
     
     // "partida": {

@@ -29,17 +29,6 @@ function listar(req, res) {
     });
 }
 
-
-
-// function listar(req, res) {
-//     Passageiro.find().populate('partida').populate('dest').exec( function(err, data) {
-//         if(err)
-//             return res.json(err);
-        
-//         res.json(data);
-//     });
-// }
-
 function listarUm(req, res){
     Passageiro.findById(req.params.id, function(err, data){
         if(err)
@@ -68,25 +57,19 @@ function excluir(req, res){
     );
 
 }
+function alterar(req, res) {
+      var idPassageiro = req.params.id;
 
-function alterar(req, res){
-    Passageiro.findByIdAndUpdate(req.params.id, {
-        //Atributo nome recebendo atributo nome que vem da requisição
-        nome: req.body.nome,
-        cpf: req.body.cpf,
-        celular: req.body.celular
-    }, function(err, data){
-        if(err)
-            return res.json(err);
-        
-        res.json({
-            message: 'Alterado com Sucesso!'
-        });
-    });
-}
+      Passageiro.findByIdAndUpdate(idPassageiro, req.body).then(
+         function (passageiro) {
 
+            res.status(200).json(passageiro);
+         },
+         function (erro) {
+            console.error(erro);
+            res.status(404).json('Recurso não encontrado para atualizar');
+         }
+      );
 
-// async function inserir(req, res) {
-//     var x = await new Passageiro(req.body);
-//     x.save();
-// }
+   }
+

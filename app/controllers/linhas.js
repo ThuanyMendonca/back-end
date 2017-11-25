@@ -6,8 +6,8 @@ module.exports = {
     inserir,
     listar,
     listarUm,
-    // alterar,
-    deletar
+    alterar,
+    excluir
 }
 
 function inserir(req ,res) {
@@ -38,35 +38,32 @@ function listarUm(req, res){
     });
 }
 
-function deletar(req, res) {
-    Linha.findByIdAndRemove(req.params.id, function(err, data) {
-        if(err)
-            return res.json(err);
+function excluir(req, res){
+    var idLinha = req.params.id;
 
-        res.json({
-            message: 'Deletado com Sucesso!'
-        });
-    });
+    Linha.remove({_id: idLinha}).exec().then(
+        function(){
+            res.status(204).end();
+        },
+        function(erro){
+            console.error(erro);
+        }
+    );
 }
 
-/*function alterar(req, res){
-    Linha.findByIdAndUpdate(req.params.id, {
-        //Atributo nome recebendo atributo nome que vem da requisição
-        nome: req.body.nome,
-        cpf: req.body.cpf,
-        celular: req.body.celular
-    }, function(err, data){
-        if(err)
-            return res.json(err);
-        
-        res.json({
-            message: 'Alterado com Sucesso!'
-        });
-    });
-}*/
+function alterar(req, res) {
+      var idLinha = req.params.id;
 
+      Linha.findByIdAndUpdate(idLinha, req.body).then(
+         function (linha) {
 
-// async function inserir(req, res) {
-//     var x = await new Linha(req.body);
-//     x.save();
-// }
+            res.status(200).json(linha);
+         },
+         function (erro) {
+            console.error(erro);
+            res.status(404).json('Linha não encontrada para atualizar');
+         }
+      );
+
+   }
+

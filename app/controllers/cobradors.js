@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Pagamento = require('../models/Pagamento');
+var Cobrador = require('../models/Cobrador');
 
 module.exports = {
     //inserir : inserir
@@ -11,8 +11,8 @@ module.exports = {
 }
 
 function inserir(req ,res) {
-    //criando novo pagamento --> importando schema dos pagamentos da models
-    new Pagamento(req.body).save( function(err, data) {
+    //criando novo Cobrador --> importando schema dos Cobradors da models
+    new Cobrador(req.body).save( function(err, data) {
         if(err)
             return res.json(err);
 
@@ -21,7 +21,7 @@ function inserir(req ,res) {
 }
 
 function listar(req, res) {
-    Pagamento.find( function(err, data) {
+    Cobrador.find( function(err, data) {
         if(err)
             return res.json(err);
         
@@ -30,14 +30,14 @@ function listar(req, res) {
 }
 
 function listarUm(req, res){
-    Pagamento.findById(req.params.id, function(err, data){
+    Cobrador.findById(req.params.id, function(err, data){
         if(err)
             return res.json(err);
         res.json(data);
     });
 }
 function obterUm(req, res){
-    Pagamento.findById(req.params.id, function(err, data){
+    Cobrador.findById(req.params.id, function(err, data){
         if(err)
             return res.json(err);
         res.json(data);
@@ -45,9 +45,9 @@ function obterUm(req, res){
 }
 
 function excluir(req, res){
-    var idPagamento = req.params.id;
+    var idCobrador = req.params.id;
 
-    Pagamento.remove({_id: idPagamento}).exec().then(
+    Cobrador.remove({_id: idCobrador}).exec().then(
         function(){
             res.status(204).end();
         },
@@ -58,16 +58,16 @@ function excluir(req, res){
 
 }
 function alterar(req, res) {
-      var idPagamento = req.params.id;
+      var idCobrador = req.params.id;
 
-      Pagamento.findByIdAndUpdate(idPagamento, req.body).then(
-         function (pagamento) {
+      Cobrador.findByIdAndUpdate(idCobrador, req.body).then(
+         function (cobrador) {
 
-            res.status(200).json(pagamento);
+            res.status(200).json(cobrador);
          },
          function (erro) {
             console.error(erro);
-            res.status(404).json('Pagamento não encontrado para atualizar');
+            res.status(404).json('Cobrador não encontrado para atualizar');
          }
       );
 

@@ -1,14 +1,17 @@
-module.exports = function(app){
-    //Fazer o require do controller da cidade
+module.exports = function (app) {
     var controller = require('../controllers/cidades');
 
-    //Inserindo
     app.post('/cidades', controller.inserir);
-    //Listando
+
     app.get('/cidades', controller.listar);
-    app.get('/cidades/:id', controller.listarPorId);
-    //Removendo
-    app.delete('/cidades/:id', controller.remover);
-    //Alterando
+
+    ///cidades é a requisição - :id é o params
+    app.delete('/cidades/:id', controller.excluir);
+
     app.put('/cidades/:id', controller.alterar);
+    
+    // app.get('/cidades/:id', controller.listarPorId);
+
+    app.get('/cidades/:id', controller.listarUm);
+    // app.post('/cidades',controller.alterar);
 }

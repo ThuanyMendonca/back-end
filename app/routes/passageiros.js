@@ -1,7 +1,7 @@
 module.exports = function (app) {
     var controller = require('../controllers/passageiros');
 
-    app.put('/passageiros', controller.inserir);
+    app.post('/passageiros', controller.inserir);
 
     app.get('/passageiros', controller.listar);
 
@@ -9,21 +9,9 @@ module.exports = function (app) {
     app.delete('/passageiros/:id', controller.excluir);
 
     app.put('/passageiros/:id', controller.alterar);
-
+    
     // app.get('/passageiros/:id', controller.listarPorId);
 
     app.get('/passageiros/:id', controller.listarUm);
-    app.post('/passageiros',controller.alterar);
+    // app.post('/passageiros',controller.alterar);
 }
-
-// function(err, data) {
-
-// }
-
-// (err, data) => {
-
-// }
-
-
-
-
