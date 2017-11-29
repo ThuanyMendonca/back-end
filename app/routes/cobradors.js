@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    var controller = require('../controllers/cobradores');
+    var controller = require('../controllers/cobradors');
 
     app.post('/cobradores', controller.inserir);
 

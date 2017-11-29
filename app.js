@@ -41,6 +41,8 @@ app.use(cors());
     require('./app/routes/pagamentos')(app);
     require('./app/routes/linhas')(app);
     require('./app/routes/auth')(app);
+    require('./app/routes/cobradors')(app);
+    require('./app/routes/passagems')(app);
 })();
 
 
