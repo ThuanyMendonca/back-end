@@ -7,13 +7,11 @@ var linhaSchema = mongoose.Schema({
     
     },
     partida: {
+        type: String,
         
-        type:String,
-        required: true
     },
     dest: {
-        type:String,
-        required: true
+        type: String
     }
 });
 //Letra minuscula 
