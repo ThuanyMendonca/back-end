@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Passagem = require('../models/Passagem');
 
 module.exports = {
-    //inserir : inserir
     inserir,
     listar,
     listarUm,
@@ -11,7 +10,6 @@ module.exports = {
 }
 
 function inserir(req ,res) {
-    //criando novo Passagem --> importando schema dos Passagems da models
     new Passagem(req.body).save( function(err, data) {
         if(err)
             return res.json(err);
@@ -21,7 +19,7 @@ function inserir(req ,res) {
 }
 
 function listar(req, res) {
-    Passagem.find( function(err, data) {
+    Passagem.find().populate('cidade_origem').populate('cidade_destino').populate('nome').populate('cpf').populate('valor').populate('nome_cobrador').populate('linha').exec( function(err, data) {
         if(err)
             return res.json(err);
         
@@ -67,7 +65,9 @@ function alterar(req, res) {
          },
          function (erro) {
             console.error(erro);
-            res.status(404).json('Passagem não encontrado para atualizar');
+            res.status(404).json('Recurso não encontrado para atualizar');
          }
       );
+
    }
+

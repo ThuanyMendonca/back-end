@@ -6,12 +6,20 @@ var linhaSchema = mongoose.Schema({
         required: true
     
     },
-    partida: {
-        type: String,
+    // partida: {
+    //     type: String,
         
+    // },
+    // dest: {
+    //     type: String
+    // }
+    cidade_origem: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'cidade'
     },
-    dest: {
-        type: String
+    cidade_destino: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'cidade'
     }
 });
 //Letra minuscula 
