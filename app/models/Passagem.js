@@ -3,26 +3,23 @@ var mongoose = require('mongoose');
 
 //Criar schema usando uma variavel recebendo o mongoose
 var passagemSchema = new mongoose.Schema({
-    nome:{
+    passsageiro:{
         type: mongoose.Schema.ObjectId,
-        ref: 'passageiro'
-    },
-    cpf:{
-        type: mongoose.Schema.ObjectId,
-        ref: 'passageiro'
+        ref: 'passageiro',
+        require: true
     },
     valor:{
+        type: Number
+    },
+    cobrador:{
         type: mongoose.Schema.ObjectId,
-        ref:'pagamento'
+        ref: 'cobrador',
+        require: true
     },
-    nome_cobrador:{
-        type: mongoose.Schema.ObjectId,
-        ref: 'cobrador'
-    },
-    linha:{
-        type:mongoose.Schema.ObjectId,
-        ref: 'linha'
-    },
+    // linha:{
+    //     type:mongoose.Schema.ObjectId,
+    //     ref: 'linha'
+    // },
     cidade_origem:{
         type: mongoose.Schema.ObjectId,
         ref: 'cidade'
@@ -32,8 +29,7 @@ var passagemSchema = new mongoose.Schema({
         ref: 'cidade'
     },
     data:{
-        type:mongoose.Schema.ObjectId,
-        ref: 'passageiro'
+        type: Date
     }
 });
 

@@ -21,6 +21,10 @@ var schema = mongoose.Schema({
     data : {
         type: Date
     }
+    // cobrador: {
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: 'cobrador'
+    // }
     
     // "partida": {
     //     type: mongoose.Schema.ObjectId,
