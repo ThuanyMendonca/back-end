@@ -19,7 +19,7 @@ function inserir(req ,res) {
 }
 
 function listar(req, res) {
-    Passagem.find().populate('cidade_origem').populate('cidade_destino').populate('passageiro').populate('cobrador').exec( function(err, data) {
+    Passagem.find().populate('passageiro').populate('cobrador').populate('cidade_origem').populate('cidade_destino').exec( function(err, data) {
         if(err)
             return res.json(err);
         
