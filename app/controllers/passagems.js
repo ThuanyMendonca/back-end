@@ -19,11 +19,7 @@ function inserir(req ,res) {
 }
 
 function listar(req, res) {
-<<<<<<< HEAD
-    Passagem.find().populate('cidade_origem').populate('cidade_destino').populate('passageiro').exec( function(err, data) {
-=======
     Passagem.find().populate('passageiro').populate('cobrador').populate('cidade_origem').populate('cidade_destino').exec( function(err, data) {
->>>>>>> bc3ebba06fa1f9c4935b614b7314299752d94ad1
         if(err)
             return res.json(err);
         
