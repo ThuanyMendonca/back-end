@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 //Criar schema usando uma variavel recebendo o mongoose
 var passagemSchema = new mongoose.Schema({
-    passsageiro:{
+    passageiro:{
         type: mongoose.Schema.ObjectId,
         ref: 'passageiro',
         require: true
