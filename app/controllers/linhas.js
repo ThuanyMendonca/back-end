@@ -22,7 +22,7 @@ function inserir(req ,res) {
 
 
 function listar(req, res) {
-    Linha.find( function(err, data) {
+    Linha.find().populate('cidade_origem').populate('cidade_destino').exec( function(err, data) {
         if(err)
             return res.json(err);
         
