@@ -9,13 +9,14 @@ var passagemSchema = new mongoose.Schema({
         require: true
     },
     valor:{
-        type: Number
-    },
-    cobrador:{
         type: mongoose.Schema.ObjectId,
-        ref: 'cobrador',
-        require: true
+        ref: 'pagamento'
     },
+    // nome_cobrador:{
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: 'cobrador',
+    //     require: true
+    // },
     // linha:{
     //     type:mongoose.Schema.ObjectId,
     //     ref: 'linha'
